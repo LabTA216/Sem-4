@@ -49,7 +49,14 @@ int main(int argc, char const *argv[])
          {
             next[i]+=next[i-1];
             prev[city-i-1] += prev[city-i];
+            
          }
+
+         for (int i = 0; i < city; i++)
+         {
+            cout << prev[i] << " " << next[i] << endl;
+         }
+         
          
          int m;
          cin >> m;
@@ -58,10 +65,10 @@ int main(int argc, char const *argv[])
             int i,f;
             cin >> i >> f;
             if(i > f){
-                cout << prev[i] - prev[f] << endl;
+                cout << prev[i-1] - prev[f-1] << endl;
             }
             else{
-                cout << next[f] - next[i] << endl;
+                cout << next[f-1] - next[i-1] << endl;
             }
          }
          
