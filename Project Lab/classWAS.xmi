@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="2.1" xmlns:xmi="http://www.omg.org/XMI" xmlns:uml="http://www.omg.org/UML/2000">
+  <ownedElement>
+    <!-- User Class -->
+    <packagedElement xmi:type="uml:Class" xmi:id="User" name="User">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="UserID" name="UserID" visibility="private"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="UserName" name="UserName" visibility="private"/>
+      <!-- Add other attributes -->
+      <ownedOperation xmi:type="uml:Operation" xmi:id="login" name="login"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="logout" name="logout"/>
+      <!-- Add other methods -->
+    </packagedElement>
+
+    <!-- Role Class -->
+    <packagedElement xmi:type="uml:Class" xmi:id="Role" name="Role">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="RoleID" name="RoleID" visibility="private"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="RoleName" name="RoleName" visibility="private"/>
+      <!-- Add other attributes -->
+      <ownedOperation xmi:type="uml:Operation" xmi:id="assignRole" name="assignRole"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="removeRole" name="removeRole"/>
+      <!-- Add other methods -->
+    </packagedElement>
+
+    <!-- Add other classes, associations, and relationships -->
+
+  </ownedElement>
+</uml:Model>
