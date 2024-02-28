@@ -2,7 +2,7 @@
 using namespace std;
 
 bool isOperator(string c) {
-   return c == "+" || c == "-" || c == "*" || c == "/" || c == "=" || c == "(" || c == "{" || c == "%" || c == ";" || c == "," || c == "main" || c == "return" || c == "\"";
+   return c == "+" || c == "-" || c == "*" || c == "/" || c == "=" || c == "(" || c == "{" || c == "\%d" || c == ";" || c == "," || c == "main" || c == "return" || c == "\"";
 }
 
 
