@@ -5,8 +5,6 @@ void merge(vector<int> &arr, int s , int e){
     if(s >= e){
         return;
     }
-
-
     int mid = (s+e)/2;
     int len1 = mid - s+1, len2 = e - mid ; 
     int *first = new int[len1];
@@ -31,23 +29,15 @@ void merge(vector<int> &arr, int s , int e){
             arr[arrptr++] = second[sptr++];
         }
     }
-    
     while (fptr < len1)
     {
         arr[arrptr++] = first[fptr++];
     }
-
     while (sptr < len2)
     {
-        
+
         arr[arrptr++] = second[sptr++];
-
     }
-
-    
-    
-
-
 }
 
 void mergeSort(vector<int> &arr, int s , int e){
