@@ -3,31 +3,33 @@
 #include <queue>
 #include <unordered_set>
 #include <utility>
-#include <climits> 
+#include <climits>
 
 using namespace std;
 
-typedef pair<int, int> pii;
+struct Edge {
+    int src, dest, weight;
+};
 
 struct Graph {
     int V;
-    vector<vector<pii>> adjList;
+    vector<vector<Edge>> adjList;
 
     Graph(int V) : V(V), adjList(V) {}
 
     void addEdge(int u, int v, int weight) {
-        adjList[u].push_back({v, weight});
-        adjList[v].push_back({u, weight});
+        adjList[u].push_back({u, v, weight});
+        adjList[v].push_back({v, u, weight});
     }
 };
 
-vector<pii> primMST(Graph& graph) {
-    vector<pii> mst;
+vector<Edge> primMST(Graph& graph) {
+    vector<Edge> mst;
     vector<int> dist(graph.V, INT_MAX);
     vector<int> parent(graph.V, -1);
     vector<bool> inMST(graph.V, false);
 
-    priority_queue<pii, vector<pii>, greater<pii>> pq;
+    priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> pq;
 
     int src = 0;
     pq.push({0, src});
@@ -40,8 +42,8 @@ vector<pii> primMST(Graph& graph) {
         inMST[u] = true;
 
         for (auto& neighbor : graph.adjList[u]) {
-            int v = neighbor.first;
-            int weight = neighbor.second;
+            int v = neighbor.dest;
+            int weight = neighbor.weight;
 
             if (!inMST[v] && weight < dist[v]) {
                 dist[v] = weight;
@@ -52,14 +54,14 @@ vector<pii> primMST(Graph& graph) {
     }
 
     for (int i = 1; i < graph.V; ++i) {
-        mst.push_back({parent[i], i});
+        mst.push_back({parent[i], i, dist[i]});
     }
 
     return mst;
 }
 
 int main() {
-    int V = 5; 
+    int V = 5;
     Graph graph(V);
 
     graph.addEdge(0, 1, 2);
@@ -70,11 +72,11 @@ int main() {
     graph.addEdge(2, 4, 7);
     graph.addEdge(3, 4, 9);
 
-    vector<pii> minimum_spanning_tree = primMST(graph);
+    vector<Edge> minimum_spanning_tree = primMST(graph);
 
     cout << "Minimum Spanning Tree using Prim's algorithm:\n";
     for (auto& edge : minimum_spanning_tree) {
-        cout << edge.first << " - " << edge.second << endl;
+        cout << edge.src << " - " << edge.dest << " : " << edge.weight << endl;
     }
 
     return 0;
